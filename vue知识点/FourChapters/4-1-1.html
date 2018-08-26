@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>使用组件细节~计数器</title>
+	<script src="../vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<counter ref="one" @band="change"></counter>
+		<counter ref="two" @band="change"></counter>
+		<div>{{total}}</div>
+	</div>
+</body>
+<script >
+	Vue.component('counter',{
+		data:function (){
+			return{
+				content: 0
+			}
+		},
+		template:'<div @click="handleclick">{{content}}</div>',
+		methods:{
+			handleclick:function(){
+				this.content++
+				this.$emit('band');
+			}
+		}
+	});
+
+	new Vue({
+		el:'#app',
+		data:{
+			total:0
+		},
+		methods:{
+			change:function(){
+				this.total=this.$refs.one.content+this.$refs.two.content;
+			}
+		}
+	});
+</script>
+</html>

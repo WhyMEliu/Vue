@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue中多个元素或组件过渡</title>
+	<script src="../vue.js"></script>
+	<style >
+		.v-enter, .v-leave-to{
+			opacity: 0;
+		}
+		.v-enter-active, .v-leave-active{
+			transition: opacity 1s;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="app">
+		<transition mode="out-in">
+			<component :is="type"></component>
+			<!-- <div v-if="show" key="hello">hello</div>
+			<div v-else key="world">world~</div> -->
+		</transition>
+		<button @click="handleclick">点击</button>
+	</div>
+</body>
+<script >
+	Vue.component('child',{
+		template:'<div>hello</div>'
+	});
+	Vue.component('child-one',{
+		template:'<div>world~</div>'
+	});
+	new Vue({
+		el:"#app",
+		data:{
+			type:"child"
+			/*show:false*/
+		},
+		methods:{
+			handleclick:function(){
+				this.type=this.type==="child"?"child-one":"child";
+				/*this.show=!this.show;*/
+			}
+		}
+	});
+</script>
+	
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue条件渲染</title>
+	<script src="../vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div v-if="check==='a'">{{message}}</div>
+		<div v-else-if="check==='b'">hah</div>
+		<div v-else >hehe</div>
+		<!-- <div v-show="check">{{message}}</div> -->
+	</div>
+</body>
+<script >
+	var vm= new Vue({
+		el:"#app",
+		data:{
+			check:'a',
+			message:"hello world"
+		}
+	});
+</script>
+</html>

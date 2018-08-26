@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>vue作用域插槽</title>
+	<script src="../vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<child>
+			<template slot-scope="pro">
+				<li>{{pro.item}}~~~</li>
+			</template>
+			
+		</child>
+	</div>
+</body>
+<script >
+	Vue.component('child',{
+		data:function (){
+			return {
+				list:[1,2,3,4]
+			}			
+		},
+		template:`<div>
+					<slot 
+					v-for="item of list"
+					:item="item"
+					></slot>
+				 </div>`
+	});
+	new Vue({
+		el:'#app'
+	});
+</script>
+</html>

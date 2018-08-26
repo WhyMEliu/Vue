@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue中的样式绑定</title>
+	<script src="../vue.js"></script>
+	<style type="text/css">
+		.activated{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+
+	<!-- 
+	 <div id="app" 
+		 :class="{activated: isActivated}"
+		 @click="handledivClick" >
+			hello World~
+	</div> -->
+	<!-- <div id="app" 
+		 :class="[activated,activatedOne]"
+		 @click="handledivClick" >
+			hello World~
+	</div> -->
+	<div id="app" 
+		 :style="[styleObj,{fontSize: '20px'}]"
+		 @click="handledivClick" >
+			hello World~
+	</div>
+</body>
+<script >
+	/*var vm = new Vue({
+		el:"#app",
+		data:{
+			isActivated: false
+		},
+		methods:{
+			handledivClick:function () {
+				this.isActivated=!this.isActivated;
+			}
+		}
+	});*/
+	/*var vm = new Vue({
+		el:"#app",
+		data:{
+			activated: "activated",
+			activatedOne:"activatedone"
+		},
+		methods:{
+			handledivClick:function () {
+				this.activated = this.activated === "activated" ? "" : "activated";
+			}
+		}
+	});*/
+	var vm = new Vue({
+		el:"#app",
+		data:{
+			styleObj:{
+				color:"red"
+			}
+		},
+		methods:{
+			handledivClick:function () {
+				this.styleObj.color = this.styleObj.color === "black" ? "red" : "black";
+			}
+		}
+	});
+</script>
+</html>

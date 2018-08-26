@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>vue作用域插槽</title>
+	<script src="../vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<component :is="type"></component>
+		<button @click="handleclick">change</button>
+	</div>
+</body>
+<script >
+	Vue.component('child-one',{template:`<div v-once>child-one</div>`});
+	Vue.component('child-two',{template:`<div v-once>child-two</div>`});
+	new Vue({
+		el:'#app',
+		data:{
+			type:"child-one"
+		},
+		methods:{
+			handleclick:function(){
+				this.type=this.type==="child-one"?"child-two":"child-one";
+			}	
+		}
+
+	});
+</script>
+</html>

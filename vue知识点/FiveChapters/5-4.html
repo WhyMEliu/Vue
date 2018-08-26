@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue中的Velocity.js使用</title>
+	<script src="../vue.js"></script>
+	<script src="./velocity.js"></script>
+</head>
+<body>
+	<div id="app">
+		<transition 
+			name ="fade"
+			@before-enter="handlebeforeenter"
+			@enter="handleenter"
+			@after-enter="handleafterenter"
+		>
+			<div v-show="show">
+				hello world~
+			</div>
+		</transition>
+		<button @click="handleclick">点击</button>
+	</div>
+</body>
+<script >
+	new Vue({
+		el:"#app",
+		data:{
+			show:false
+		},
+		methods:{
+			handleclick:function(){
+				this.show=!this.show;
+			},
+			handlebeforeenter:function(el){
+				el.style.opacity=0;
+			},
+			handleenter:function(el,done){
+				Velocity(el,{
+					opacity: 1
+				},
+				{
+					duration: 10000,
+					complete: done
+				}
+				)
+			},
+			handleafterenter:function(){
+				console.log("动画结束");
+			}
+
+		}
+	});
+</script>
+	
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>非父子组件之间的数据传递（总线传递）</title>
+	<script src="../vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<child content="L"></child>
+		<child content="P"></child>
+	</div>
+</body>
+<script >
+	Vue.prototype.bus = new Vue();
+	Vue.component('child',{
+		data:function(){
+			return {
+				selfContent:this.content
+			}
+		},
+		props:{
+			content:{
+				type:String
+			}
+		},
+		template:'<div @click="handleclick">{{selfContent}}</div>',
+		methods:{
+			handleclick:function (){
+				this.bus.$emit('change',this.selfContent);
+			}
+		},
+		mounted:function(){
+			var this_=this;
+			this.bus.$on('change',function(msg){
+				alert(msg);
+				this_.selfContent=msg;
+			})
+		}
+	});
+	new Vue({
+		el:'#app'
+	});
+</script>
+</html>

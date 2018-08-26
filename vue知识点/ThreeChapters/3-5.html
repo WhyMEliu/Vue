@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>计算属性，方法与侦听器</title>
+	<script src="../vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		{{fullname}}
+		{{age}}
+	</div>
+</body>
+<script >
+	var vm = new Vue ({
+				el: "#app",
+				data:{
+					firstname:"pengpeng",
+					lastname:"LP",
+					age:28
+				},
+				//计算属性 get set 方法
+				computed: {
+					fullname:{
+						get:function (){
+							console.log("计算一次");
+							return this.firstname+"  "+this.lastname;
+						},
+						set:function (value){
+							var arr= value.split(" ");
+							this.firstname=arr[0];
+							this.lastname=arr[1];
+						}
+					}
+				}
+				
+			});
+
+</script>
+</html>

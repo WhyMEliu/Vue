@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue中的动画原理</title>
+	<script src="../vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<transition name="fade">
+			<div v-show="show">
+				hello world~
+			</div>
+		</transition>
+		<button @click="handleclick">点击</button>
+	</div>
+</body>
+<script >
+	new Vue({
+		el:"#app",
+		data:{
+			show:false
+		},
+		methods:{
+			handleclick:function(){
+				this.show=!this.show;
+			}	
+		}
+	});
+</script>
+<style >
+	.fade-enter{
+		opacity: 0;
+	}
+	.fade-enter-active{
+		transition: opacity 3s;
+	}
+	/* .fade-leave-to{
+		opacity: 0;
+	}
+	.fade-leave-active{
+		transition: opacity 3s;
+	} */
+</style>
+	
+</html>

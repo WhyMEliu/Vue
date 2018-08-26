@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>父子组件的数据传递</title>
+	<script src="../vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<counter counts="2" @band="change"></counter>
+		<counter  counts="3" @band="change"></counter>
+		<div>{{total}}</div>
+	</div>
+</body>
+<script >
+	  var counter = {
+		props:['counts'],
+		data:function (){
+			return{
+				content: this.counts
+			}
+		},
+		template:'<div @click="handleclick">{{content}}</div>',
+		methods:{
+			handleclick:function(){
+				this.content= this.content+2;
+				this.$emit('band',2);
+			}
+		}
+	};
+
+	new Vue({
+		el:'#app',
+		data:{
+			total:5
+		},
+		methods:{
+			change:function(value){
+				this.total=this.total+value;
+			}
+		},
+		components:{
+			counter:counter
+		}
+	});
+</script>
+</html>

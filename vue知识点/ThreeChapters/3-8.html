@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue列表渲染</title>
+	<script src="../vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div v-for="(item,key,index) of objec">
+			{{item}}----{{key}}
+		</div>
+	</div>
+</body>
+<script >
+	var vm= new Vue({
+		el:"#app",
+		data:{
+			list:[
+				"你",
+				"是",
+				"刘",
+				"鹏"
+			],
+			objec:{
+				name:"liupeng",
+				age:"25",
+				sex:"nan"
+			}
+		}
+	});
+</script>
+</html>

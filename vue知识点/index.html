@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>hello world</title>
+	<script src="./vue.js"></script>
+</head>
+<body>
+	<div id="app">{{context}}</div>
+</body>
+<script >
+	var app= new Vue ({
+		el: '#app',
+		data: {
+			context: 'Hello World~'
+		}
+	});
+
+	setTimeout(function(){
+		app.$data.context='bye world~'
+	},2000)
+</script>
+</html>

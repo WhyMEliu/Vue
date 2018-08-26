@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>模板语法</title>
+	<script src="../vue.js"></script>
+</head>
+<body>
+	<div id="app">
+    	<div>{{message}}</div>
+    	<div v-text="message +' LP'"></div>
+    	<div v-html="message+' LP'"></div>
+    </div>
+
+</body>
+<script type="text/javascript">
+	var vm = new Vue ({
+		el:"#app",
+		data:{
+			message:"hello world"
+		}
+	});
+</script>
+</html>
